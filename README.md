@@ -1,6 +1,16 @@
 
 # 🐍 Modern Python Development Environment (uv)
 
+[![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-2E7D32)](LICENSE)
+[![Linting](https://img.shields.io/badge/Linting-Ruff-8B0000?logo=ruff&logoColor=white)](https://docs.astral.sh/ruff/)
+[![Static Typing](https://img.shields.io/badge/Static%20Typing-Pyright-4B32C3?logo=microsoft&logoColor=white)](https://github.com/microsoft/pyright)
+[![Dependency Management](https://img.shields.io/badge/Dependency%20Management-uv-FF7A00?logo=rust&logoColor=white)](https://docs.astral.sh/uv/)
+[![CI](https://github.com/miguelcosta2c/modern-python-development-environment/actions/workflows/ci.yml/badge.svg)](
+https://github.com/miguelcosta2c/modern-python-development-environment/actions/workflows/ci.yml
+)
+
+
 A **modern Python development template** powered by **uv**, following current best practices such as:
 
 - `src/` layout
