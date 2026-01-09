@@ -195,7 +195,7 @@ This project is licensed under the **MIT License**.
 ## 👤 Author
 
 **Miguel Costa**
-📧 [miguelcosmecosta@email.com](mailto:miguelcosmecosta@email.com)
+📧 [miguelcosmecosta@gmail.com](mailto:miguelcosmecosta@gmail.com)
 
 ---
 
