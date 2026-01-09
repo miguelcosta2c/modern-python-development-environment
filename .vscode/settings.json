@@ -1,0 +1,21 @@
+{
+    // python configs
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "python-envs.defaultPackageManager": "uv",
+
+    "ruff.importStrategy": "fromEnvironment",
+    "ruff.fixAll": true,
+    "ruff.organizeImports": true,
+
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+        },
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.defaultColorDecorators": "always",
+        "editor.formatOnType": false,
+        "editor.wordBasedSuggestions": "off",
+    }
+}

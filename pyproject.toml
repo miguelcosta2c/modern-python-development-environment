@@ -1,27 +1,27 @@
 # ============================
-# Projeto
-# Referência: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+# Project
+# Reference: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
 #
-# Instale o pacote: python-dotenv
-# Mostrei como no README.md
+# Install the package: python-dotenv
+# I showed how in README.md
 #
-# Os pontos de atenção estão comentados próximo das chaves, aqui só coloquei um
-# lembrete.
+# The points of attention are commented next to the keys, here I just put a
+# reminder.
 #
-# Atenção: As versões do Python devem ser consistentes entre:
+# Attention: Python versions must be consistent between:
 #   - project.requires-python
 #   - tool.ruff.target-version
 #   - tool.pyright.pythonVersion
 #
-# Atenção: O nome do pacote principal deve ser consistente entre:
+# Attention: The main package name must be consistent between:
 #   - project.scripts
 #   - tool.ruff.lint.isort.known-first-party
-#   - A pasta dentro de 'src/'
+#   - The folder inside 'src/'
 # ============================
 [project]
-name = "project3"
+name = "project"
 version = "0.0.1"
-description = "project3"
+description = "project"
 readme = "README.md"
 license = "MIT"
 authors = [{ name = "Miguel Costa", email = "miguelcosmecosta@email.com" }]
@@ -29,7 +29,7 @@ requires-python = ">=3.13"
 dependencies = ["python-dotenv>=1.1.0"]
 
 [project.urls]
-Homepage = "https://www.otaviomiranda.com.br/"
+Homepage = "https://homepage.example.com"
 # Documentation = "https://example.org"
 # Repository = "https://github.com/me/spam.git"
 # Issues = "https://github.com/me/spam/issues"
@@ -39,14 +39,14 @@ Homepage = "https://www.otaviomiranda.com.br/"
 dev = ["ruff", "pyright", "pytest", "pytest-xdist"]
 
 [project.scripts]
-# Define os comandos de console. A chave ('project3') é o comando.
-# O valor aponta para 'nome_do_pacote.nome_do_modulo:nome_da_funcao'.
-# Ex: 'my_package.main:run' -> src/my_package/main.py (e a função run lá dentro).
-# Lembre-se de sincronizar o nome do pacote com 'known-first-party' do Ruff.
-project3 = "my_package.my_module:run_from_script"
+# Defines the console commands. The key ('project') is the command.
+# The value points to 'package_name.module_name:function_name'.
+# Ex: 'my_package.main:run' -> src/my_package/main.py (and the run function inside).
+# Remember to sync the package name with Ruff's 'known-first-party'.
+project = "my_package.my_module:run_from_script"
 
 # ============================
-# Lint e formatação (Ruff)
+# Lint and formatting (Ruff)
 # ============================
 [tool.ruff]
 line-length = 88
@@ -104,13 +104,13 @@ indent-style = "space"
 line-ending = "lf"
 
 [tool.ruff.lint.isort]
-# Ensina ao Ruff qual é o pacote principal do seu projeto.
-# Deve ser o mesmo nome da pasta dentro de 'src/'.
+# Teaches Ruff what the main package of your project is.
+# It must be the same name as the folder inside 'src/'.
 known-first-party = ["my_package"]
 
 
 # ============================
-# Tipagem (Pyright)
+# Typing (Pyright)
 # ============================
 [tool.pyright]
 typeCheckingMode = "strict"
@@ -129,28 +129,28 @@ venvPath = "."
 executionEnvironments = [{ root = "src" }]
 
 # ============================
-# Testes (Pytest)
+# Tests (Pytest)
 # ============================
 [tool.pytest.ini_options]
 addopts = "-s --color=yes --tb=short"
-# Adiciona 'src' ao path do Python durante os testes. Isso permite que
-# os testes em `tests/` importem os módulos de `src/` sem erros.
+# Adds 'src' to the Python path during tests. This allows
+# tests in `tests/` to import modules from `src/` without errors.
 pythonpath = ["src"]
 testpaths = ["tests"]
 
 
 # ============================
-# Build e Setuptools
+# Build and Setuptools
 # ============================
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-# Informa ao setuptools para encontrar os pacotes dentro da pasta 'src'.
-# Essencial para a estrutura de layout com 'src/'.
+# Tells setuptools to find packages inside the 'src' folder.
+# Essential for the layout structure with 'src/'.
 where = ["src"]
 
 [tool.setuptools]
-# Mapeia o diretório raiz de pacotes para 'src'.
+# Maps the root package directory to 'src'.
 package-dir = { "" = "src" }
