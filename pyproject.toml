@@ -57,43 +57,20 @@ indent-width = 4
 exclude = ["venv", ".venv", "env", ".env", "node_modules", "__pycache__"]
 
 [tool.ruff.lint]
-select = [
-    "ASYNC",
-    "A",
-    "ANN",
-    "B",
-    "BLE",
-    "C4",
-    "C90",
-    "COM",
-    "E",
-    "EM",
-    "ERA",
-    "EXE",
-    "F",
-    "FBT",
-    "FIX",
-    "I",
-    "ICN",
-    "ISC",
-    "Q",
-    "RET",
-    "RSE",
-    "S",
-    "SIM",
-    "SLF",
-    "T10",
-    "T20",
-    "TC",
-    "TD",
-    "TRY",
-    "UP",
-    "W",
-    "YTT",
-    "RUF",
-    "N",
+select = ["ALL"]
+ignore = [
+  "A004",   # Checks for imports that use the same names as builtins.
+  "ARG001", # Checks for the presence of unused arguments in function definitions.
+  "ARG002", # Checks for the presence of unused arguments in instance method definitions.
+  "ANN401", # Checks that function arguments are annotated with a more specific type than Any.
+  "COM812", # Checks for the absence of trailing commas.
+  "D",      # All pydocstyle (D)
+  "ERA001", # Checks for commented-out Python code.
+  "INP001", # Checks for packages that are missing an __init__.py file.
+  "S101",   # Checks for uses of the assert keyword.
+  "T201",   # Checks for print statements,
 ]
-ignore = ["T201", "COM812"]
+
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["ANN201", "S101"]
