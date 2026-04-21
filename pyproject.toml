@@ -26,7 +26,7 @@ readme = "README.md"
 license = "MIT"
 authors = [{ name = "Miguel Costa", email = "miguelcosmecosta@email.com" }]
 requires-python = ">=3.13"
-dependencies = ["python-dotenv>=1.1.0"]
+dependencies = ["python-dotenv>=1.2.2"]
 
 [project.urls]
 Homepage = "https://homepage.example.com"
