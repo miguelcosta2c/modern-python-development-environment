@@ -23,7 +23,7 @@ wheels/
 
 # Enviroments (uv)
 .venv/
-# .env
+.env
 
 # Linting and Typing Tools
 .ruff_cache/

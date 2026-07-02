@@ -19,7 +19,7 @@
 #   - The folder inside 'src/'
 # ============================
 [project]
-name = "project"
+name = "my_package"
 version = "0.0.1"
 description = "project"
 readme = "README.md"
@@ -28,6 +28,10 @@ authors = [{ name = "Miguel Costa", email = "miguelcosmecosta@email.com" }]
 requires-python = ">=3.13"
 dependencies = ["python-dotenv>=1.1.0"]
 
+# SECURITY: 7-day grace period against supply chain attacks (like in npm)
+[tool.uv]
+exclude-newer = "7 days"
+
 [project.urls]
 Homepage = "https://homepage.example.com"
 # Documentation = "https://example.org"
@@ -35,15 +39,15 @@ Homepage = "https://homepage.example.com"
 # Issues = "https://github.com/me/spam/issues"
 # Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = ["ruff", "pyright", "pytest", "pytest-xdist"]
 
 [project.scripts]
-# Defines the console commands. The key ('project') is the command.
+# Defines the console commands. The key ('project-cli') is the command.
 # The value points to 'package_name.module_name:function_name'.
 # Ex: 'my_package.main:run' -> src/my_package/main.py (and the run function inside).
 # Remember to sync the package name with Ruff's 'known-first-party'.
-project = "my_package.my_module:run_from_script"
+project-cli = "my_package.my_module:run_from_script"
 
 # ============================
 # Lint and formatting (Ruff)
@@ -70,6 +74,7 @@ ignore = [
   "INP001", # Checks for packages that are missing an __init__.py file.
   "S101",   # Checks for uses of the assert keyword.
   "T201",   # Checks for print statements,
+  "S106"    # Checks for potential uses of hardcoded passwords in function calls.
 ]
 
 
@@ -95,22 +100,20 @@ typeCheckingMode = "strict"
 pythonVersion = "3.13"
 include = ["src", 'tests']
 exclude = [
+    "**/.*",
     "**/venv",
-    "**/.venv",
     "**/env",
-    "**/.env",
     "**/node_modules",
     "**/__pycache__",
 ]
 venv = ".venv"
 venvPath = "."
-executionEnvironments = [{ root = "src" }]
 
 # ============================
 # Tests (Pytest)
 # ============================
 [tool.pytest.ini_options]
-addopts = "-s --color=yes --tb=short"
+addopts = "-s -vv --color=yes --tb=short"
 # Adds 'src' to the Python path during tests. This allows
 # tests in `tests/` to import modules from `src/` without errors.
 pythonpath = ["src"]
@@ -118,17 +121,11 @@ testpaths = ["tests"]
 
 
 # ============================
-# Build and Setuptools
+# Build and Hatchling
 # ============================
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.setuptools.packages.find]
-# Tells setuptools to find packages inside the 'src' folder.
-# Essential for the layout structure with 'src/'.
-where = ["src"]
-
-[tool.setuptools]
-# Maps the root package directory to 'src'.
-package-dir = { "" = "src" }
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
